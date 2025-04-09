@@ -118,3 +118,5 @@ In analyzing supplier quality and performance, key insights include:
 These insights underscore the necessity for targeted supplier management strategies and process enhancements to mitigate defects and associated costs.
 
 
+
+
