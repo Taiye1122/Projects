@@ -1,4 +1,5 @@
 # SUPPLIER QUALITY AND PERFROMANCE ANALYSIS
+![Screenshot 2025-03-27 173537](https://github.com/user-attachments/assets/e8d1f5df-ea7f-446e-8f81-61b669b2556e)
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -6,7 +7,7 @@
 - [Data Source](#data-sources)
 - [Tools](#tools)
 - [Walk Through Process](#walk-through-process)
-- [Results/Findings](#results/findings)
+- [Results/Findings](#resultsfindings)
 
 ### Project Overview
 Enterprise Manufacturers Ltd. faced significant challenges due to the lack of a centralized procurement system and inconsistent supplier quality across various plants. The company had recently consolidated data from multiple plants that included information on raw material defects, the vendors supplying these materials, and the downtime incurred when defective goods were used.
