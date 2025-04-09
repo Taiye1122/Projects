@@ -1,5 +1,6 @@
 # SUPPLIER QUALITY AND PERFROMANCE ANALYSIS
 
+![Screenshot 2025-03-27 173537](https://github.com/user-attachments/assets/b8c93a76-ddc1-4120-a092-70a9734c3434)
 
 
 ## Table of Contents
@@ -91,7 +92,8 @@ RETURN display
 - Visualizations:
 Designed key dashboards that include bar charts, heatmaps, and matrices which display:
 
-![Uploading Screenshot 2025-04-09 220015.png…]()
+![Screenshot 2025-04-09 220015](https://github.com/user-attachments/assets/1cdc0062-56bc-469f-95e9-5b05684ed7f9)
+
 
 - Top Offenders: Which vendors or plants are causing the most defects.
 
@@ -115,10 +117,4 @@ In analyzing supplier quality and performance, key insights include:
 
 These insights underscore the necessity for targeted supplier management strategies and process enhancements to mitigate defects and associated costs.
 
-![Screenshot 2025-04-09 220034](https://github.com/user-attachments/assets/0d0fd2b6-9a4c-4eb1-8a82-986717bf8afe)
 
-![Screenshot 2025-04-09 220212](https://github.com/user-attachments/assets/25de68d5-e1eb-4701-b57e-e7cb45a13f9e)
-
-![Screenshot 2025-04-09 220233](https://github.com/user-attachments/assets/58969ec5-ae8e-4637-8f08-db33a19d56e1)
-
-![Screenshot 2025-04-09 220253](https://github.com/user-attachments/assets/8bf1296e-b256-4630-bb48-a2a426927443)
