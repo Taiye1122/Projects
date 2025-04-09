@@ -1,5 +1,6 @@
 # SUPPLIER QUALITY AND PERFROMANCE ANALYSIS
-![Screenshot 2025-03-27 173537](https://github.com/user-attachments/assets/e8d1f5df-ea7f-446e-8f81-61b669b2556e)
+
+![Uploading Screenshot 2025-03-27 173537.png…]()
 
 ## Table of Contents
 - [Project Overview](#project-overview)
