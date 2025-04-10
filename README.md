@@ -90,10 +90,7 @@ RETURN display
 3. **Interactive Dashboard Development:**
 
 - Visualizations:
-Designed key dashboards that include bar charts, heatmaps, and matrices which display:
-
-![Screenshot 2025-04-09 220015](https://github.com/user-attachments/assets/1cdc0062-56bc-469f-95e9-5b05684ed7f9)
-
+Designed key dashboards that include bar charts, heatmaps, and matrices which display
 
 - Top Offenders: Which vendors or plants are causing the most defects.
 
@@ -104,19 +101,32 @@ Designed key dashboards that include bar charts, heatmaps, and matrices which di
 ### Results/findings
 In analyzing supplier quality and performance, key insights include:
 
+![Screenshot 2025-04-09 220015](https://github.com/user-attachments/assets/1cdc0062-56bc-469f-95e9-5b05684ed7f9)
+
 - **Financial Impact of Defects:** Defective materials led to over $2 million in downtime costs, with significant spikes in September and December.
+![Screenshot 2025-04-09 220253](https://github.com/user-attachments/assets/a712adc4-1c22-4687-b5e7-0e0675ed77dc)
 
 - **Underperforming Vendors:** Suppliers such as Avamm, Meejo, and Yombu were identified as high-risk, contributing the most to defects and downtime.
+![Screenshot 2025-04-09 220034](https://github.com/user-attachments/assets/cc388b4b-5c80-4639-8157-475b8436c5a5)
 
 - **Problematic Plants:** Facilities like Hingham, Charles City, and Twin Rocks reported defect quantities nearing 100 million, indicating significant operational issues.
+![Screenshot 2025-04-09 220212](https://github.com/user-attachments/assets/ef97ed13-592c-4d14-988d-bcda24dee037)
 
 - **Recurring Defect Types:** Issues such as bad seams were prevalent, suggesting the need for focused quality control measures.
 
-
 - **Material-Specific Problems:** Raw materials were the most problematic, causing substantial downtime and highlighting areas for supply chain improvements.
+![Screenshot 2025-04-09 220233](https://github.com/user-attachments/assets/45c5feb3-1c0a-4558-b4ad-fc690a558ff8)
 
 These insights underscore the necessity for targeted supplier management strategies and process enhancements to mitigate defects and associated costs.
 
+### Recommendation
+1. Centralize Supplier Data: Implement a unified system to consolidate supplier information across all plants, ensuring consistent tracking and evaluation of supplier performance.​
 
+2. Emphasize Financial Impact: Translate defect quantities and downtime into monetary terms to highlight the cost implications of supplier quality issues, facilitating more informed decision-making.​
 
+3. Establish Continuous Improvement Programs: Use data insights to develop programs aimed at reducing downtime, improving material quality, and addressing recurring defects, thereby enhancing overall supply chain efficiency.​
+Medium
 
+4. Leverage Advanced Analytics: Incorporate predictive models and advanced analytics to proactively identify patterns and trends, allowing for early intervention before issues escalate.
+
+### Thank you 😄
