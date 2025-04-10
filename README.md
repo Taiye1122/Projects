@@ -10,7 +10,8 @@
 - [Tools](#tools)
 - [Walk Through Process](#walk-through-process)
 - [Results/Findings](#resultsfindings)
-
+- [Recommendation](#Recommendation)
+  
 ### Project Overview
 Enterprise Manufacturers Ltd. faced significant challenges due to the lack of a centralized procurement system and inconsistent supplier quality across various plants. The company had recently consolidated data from multiple plants that included information on raw material defects, the vendors supplying these materials, and the downtime incurred when defective goods were used.
 
