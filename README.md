@@ -1,133 +1,154 @@
-# SUPPLIER QUALITY AND PERFORMANCE ANALYSIS
+# 📦 SUPPLIER QUALITY AND PERFORMANCE ANALYSIS
 
-![Screenshot 2025-03-27 173537](https://github.com/user-attachments/assets/b8c93a76-ddc1-4120-a092-70a9734c3434)
+![Dashboard Screenshot](https://github.com/user-attachments/assets/b8c93a76-ddc1-4120-a092-70a9734c3434)
 
+---
 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Project Objective](#project-objective)
-- [Data Source](#data-sources)
-- [Tools](#tools)
-- [Walk Through Process](#walk-through-process)
-- [Results/Findings](#resultsfindings)
-- [Recommendation](#Recommendation)
-  
-### Project Overview
-Enterprise Manufacturers Ltd. faced significant challenges due to the lack of a centralized procurement system and inconsistent supplier quality across various plants. The company had recently consolidated data from multiple plants that included information on raw material defects, the vendors supplying these materials, and the downtime incurred when defective goods were used.
+## 📑 Table of Contents
+- [Overview](#overview)
+- [Objective](#objective)
+- [Data Source](#data-source)
+- [Tools Used](#tools-used)
+- [Process Workflow](#process-workflow)
+- [Key Findings](#key-findings)
+- [Recommendations](#recommendations)
 
-### Project Objective
-1. Identify Key Issues:
-Determine which vendors or plants are the primary sources of defects and downtime.
-2. Analyze Combinations:
-Examine specific combinations of material, vendor, and plant to identify poor performance clusters.
-3. Support Decision-Making:
-Develop interactive dashboards in Power BI to provide clear insights and support procurement and vendor management decisions.
+---
 
-### Data Sources
-Supplier Data: The primary dataset used for this analysis is the [Supplier_data.xlsx](https://docs.google.com/spreadsheets/d/1nwO4VG5U2cklj5OoDpx6U1j0voGm-9zW/edit?usp=drive_link&ouid=106373350318822195700&rtpof=true&sd=true) file, containing detailed information information around the material, defect and vendor across all the plants.
+## 🔍 Overview
 
-### Tools
-- Excel - Data Exploration
-- Power Query - Data Cleaning
-- Power BI - Data Visualization
+Enterprise Manufacturers Ltd. was experiencing operational inefficiencies stemming from inconsistent supplier quality and a fragmented procurement system across its plants. With the recent consolidation of supplier data, the organization aimed to uncover root causes of raw material defects and their financial impact—particularly downtime caused by these issues.
 
-### Walk Through Process
-1. **Data Consolidation & Cleaning:**
+---
 
-- Gathering Data:
-Collected raw data from all relevant plants, including material details, defect counts, and downtime minutes.
+## 🎯 Objective
 
-- Data Cleaning:
-Standardized vendor names, resolved inconsistencies between plants, and cleaned the dataset for accuracy using Excel and Power Query.
+1. **Identify Key Issues:** Pinpoint vendors and plant locations contributing most to defects and downtime.  
+2. **Analyze Combinations:** Examine material–vendor–plant combinations to reveal recurring quality issues.  
+3. **Support Procurement Decisions:** Build interactive Power BI dashboards to guide procurement strategy and vendor performance management.
 
-2. **Data Modeling in Power BI:**
+---
 
-- Schema Design:
-Created a relational data model that links materials, vendors, and plant locations.
+## 🗂️ Data Source
 
-- DAX Measures:
-Here are some of the DAX measures used 
+- **Primary Dataset:** [Supplier_data.xlsx](https://docs.google.com/spreadsheets/d/1nwO4VG5U2cklj5OoDpx6U1j0voGm-9zW/edit?usp=drive_link&ouid=106373350318822195700&rtpof=true&sd=true)  
+  This dataset includes details such as material types, vendors, defect types, downtime duration, and plant locations across the enterprise.
+
+---
+
+## 🛠 Tools Used
+
+- **Microsoft Excel** – Initial data exploration  
+- **Power Query** – Data transformation and cleaning  
+- **Power BI** – Data modeling and dashboard creation
+
+---
+
+## 🔄 Process Workflow
+
+### 1. Data Consolidation & Cleaning
+- Merged raw data from multiple plants.
+- Standardized vendor naming conventions.
+- Addressed inconsistencies across plant entries.
+- Cleaned and prepped dataset using Excel and Power Query.
+
+---
+
+### 2. Data Modeling in Power BI
+
+- **Relational Model:** Designed schema linking materials, vendors, defect types, and plants.
+- **Custom Date Table:** Generated for time-based analysis using DAX.
+
 ```DAX
 Date = ADDCOLUMNS(
-                 CALENDARAUTO(),
-                 "Year", YEAR([Date]),
-                 "Quarter", QUARTER([Date]),
-                 "Month", MONTH([Date]),
-                 "Month Name", FORMAT([Date], "mmmm"),
-                 "Month Name Short", FORMAT([Date],"mmm"),
-                 "Day", DAY([Date]),
-                 "Day of the week", WEEKDAY([Date]),
-                 "day of the week name", FORMAT([Date],"dddd"),
-                 "Week of Year", WEEKNUM([Date]),
-                 "Is Weekend", IF(WEEKDAY([Date]) IN {1, 7}, True,false))
-``` 
-``` DAX
-Impact Defect Type = 
-                 VAR Impact = CALCULATE(COUNT('Supplier fact'[Defect Type ID]), KEEPFILTERS('Defect Type'[Defect Type] = "Impact"))
-                 var Defects = COUNT('Supplier fact'[Defect Type ID])
-                 RETURN DIVIDE(Impact, Defects)
-```
-``` DAX
-Rank Plant by Defect Qty = 
-           var topplantdefectquantity = IF(ISINSCOPE(Plant[Plant Location]), (RANKX(ALL(Plant[Plant Location]), [Total Defect Qty], , desc)))
-           var bottomplantdefectquantity = IF(ISINSCOPE(Plant[Plant Location]), (RANKX(ALL(Plant[Plant Location]), [Total Defect Qty], ,ASC)))
-           var ranking = IF(SELECTEDVALUE(TopBottom[Value]) = "Top" , topplantdefectquantity, bottomplantdefectquantity)
-           RETURN IF(ranking <= 'Top N Parameter'[Top N Parameter Value], [Total Defect Qty])
-```
-``` DAX
-YOY Downtime Cost Trend colour = IF([YOYGrowthDowntimeCost] > 0, "Red", "Green")
-```
-``` DAX
-YOY Downtime Cost trend Icon = 
-var positiveicon = unichar(9650)
-var negativeicon = UNICHAR(9660)
-var choice = if([YOYGrowthDowntimeCost] > 0, positiveicon,negativeicon)
-var display = choice & " " & FORMAT([YOYGrowthDowntimeCost], "0.00%")
-RETURN display
+    CALENDARAUTO(),
+    "Year", YEAR([Date]),
+    "Quarter", QUARTER([Date]),
+    "Month", MONTH([Date]),
+    "Month Name", FORMAT([Date], "mmmm"),
+    "Is Weekend", IF(WEEKDAY([Date]) IN {1, 7}, TRUE, FALSE)
+)
 ```
 
+- **Sample DAX Measures:**
 
+```DAX
+Impact Defect Ratio = 
+VAR Impact = CALCULATE(COUNT('Supplier fact'[Defect Type ID]), KEEPFILTERS('Defect Type'[Defect Type] = "Impact"))
+VAR TotalDefects = COUNT('Supplier fact'[Defect Type ID])
+RETURN DIVIDE(Impact, TotalDefects)
+```
 
-3. **Interactive Dashboard Development:**
+```DAX
+YOY Downtime Trend Icon = 
+VAR Icon = IF([YOYGrowthDowntimeCost] > 0, UNICHAR(9650), UNICHAR(9660))
+RETURN Icon & " " & FORMAT([YOYGrowthDowntimeCost], "0.00%")
+```
 
-- Visualizations:
-Designed key dashboards that include bar charts, heatmaps, and matrices which display
+---
 
-- Top Offenders: Which vendors or plants are causing the most defects.
+### 3. Dashboard & Visualization
 
-- Downtime Analysis: Breakdown of downtime across different suppliers and plants.
+Dashboards were built in Power BI to uncover:
 
-- Performance Comparisons: How the same vendor/material combination performs across various plants.
+- **Top Offending Suppliers & Plants**
+- **Downtime Trend Analysis (Monthly & YoY)**
+- **Vendor & Material Performance Comparisons Across Plants**
+- **Recurring Defect Types by Category**
 
-### Results/findings
-In analyzing supplier quality and performance, key insights include:
+Key charts include heatmaps, bar charts, matrix tables, and dynamic filtering for drill-down analysis.
 
-![Screenshot 2025-04-09 220015](https://github.com/user-attachments/assets/1cdc0062-56bc-469f-95e9-5b05684ed7f9)
+---
 
-- **Financial Impact of Defects:** Defective materials led to over $2 million in downtime costs, with significant spikes in September and December.
-![Screenshot 2025-04-09 220253](https://github.com/user-attachments/assets/a712adc4-1c22-4687-b5e7-0e0675ed77dc)
+## 📊 Key Findings
 
-- **Underperforming Vendors:** Suppliers such as Avamm, Meejo, and Yombu were identified as high-risk, contributing the most to defects and downtime.
-![Screenshot 2025-04-09 220034](https://github.com/user-attachments/assets/cc388b4b-5c80-4639-8157-475b8436c5a5)
+### 💸 **Cost of Downtime**
+- Over **$2 million** in downtime costs, with major spikes in **September** and **December**.
 
-- **Problematic Plants:** Facilities like Hingham, Charles City, and Twin Rocks reported defect quantities nearing 100 million, indicating significant operational issues.
-![Screenshot 2025-04-09 220212](https://github.com/user-attachments/assets/ef97ed13-592c-4d14-988d-bcda24dee037)
+![Downtime Cost Chart](https://github.com/user-attachments/assets/a712adc4-1c22-4687-b5e7-0e0675ed77dc)
 
-- **Recurring Defect Types:** Issues such as bad seams were prevalent, suggesting the need for focused quality control measures.
+---
 
-- **Material-Specific Problems:** Raw materials were the most problematic, causing substantial downtime and highlighting areas for supply chain improvements.
-![Screenshot 2025-04-09 220233](https://github.com/user-attachments/assets/45c5feb3-1c0a-4558-b4ad-fc690a558ff8)
+### ⚠️ **Underperforming Vendors**
+- Vendors **Avamm**, **Meejo**, and **Yombu** were the most frequent contributors to defects and downtime.
 
-These insights underscore the necessity for targeted supplier management strategies and process enhancements to mitigate defects and associated costs.
+![Vendor Issues](https://github.com/user-attachments/assets/cc388b4b-5c80-4639-8157-475b8436c5a5)
 
-### Recommendation
-1. Centralize Supplier Data: Implement a unified system to consolidate supplier information across all plants, ensuring consistent tracking and evaluation of supplier performance.​
+---
 
-2. Emphasize Financial Impact: Translate defect quantities and downtime into monetary terms to highlight the cost implications of supplier quality issues, facilitating more informed decision-making.​
+### 🏭 **Problematic Plants**
+- Plants like **Hingham**, **Charles City**, and **Twin Rocks** recorded defect quantities close to **100 million units**.
 
-3. Establish Continuous Improvement Programs: Use data insights to develop programs aimed at reducing downtime, improving material quality, and addressing recurring defects, thereby enhancing overall supply chain efficiency.​
-Medium
+![Defect Volumes](https://github.com/user-attachments/assets/ef97ed13-592c-4d14-988d-bcda24dee037)
 
-4. Leverage Advanced Analytics: Incorporate predictive models and advanced analytics to proactively identify patterns and trends, allowing for early intervention before issues escalate.
+---
 
-### Thank you 😄
+### 🔁 **Recurring Defects**
+- Defects such as **bad seams** were especially common, pointing to gaps in quality control protocols.
+
+---
+
+### 🧱 **Material-Level Concerns**
+- **Raw materials** were the primary contributors to defect-related downtime across all sites.
+
+![Material Issues](https://github.com/user-attachments/assets/45c5feb3-1c0a-4558-b4ad-fc690a558ff8)
+
+---
+
+## ✅ Recommendations
+
+1. **Centralized Supplier System**  
+   Implement a unified supplier management system to maintain consistent records and performance tracking across all locations.
+
+2. **Monetize Defect Impact**  
+   Always translate defects and downtime into financial terms to better communicate business impact and prioritize solutions.
+
+3. **Continuous Improvement Programs**  
+   Create data-driven initiatives to address recurring issues—e.g., vendor scorecards, QC enhancements, and employee training.
+
+4. **Predictive Analytics Integration**  
+   Develop predictive models using historical defect and downtime trends to proactively flag at-risk vendors or materials.
+
+---
+
+### 🙏 Thank You!
